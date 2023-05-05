@@ -1,0 +1,44 @@
+@import './kt.css';
+@import './customiz.css';
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 1em;
+    color: var(--black-text);
+}
+
+:root {
+    --black-text: #646262;
+    --gray-back: #EFEFEF;
+    --blue-text: #238FD9;
+    --dark-gray: #D8D9D9;
+    --blue0line: #3C9DE0;
+    --labelColor: #787778;
+
+    /*custom*/
+
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.label {
+    position: relative;
+    white-space: nowrap;
+    z-index: 1;
+    width: 0px;
+    font-size: 15px;
+    inset: -21px 7px;
+}
+
+.label > a {
+    background: white;
+    padding: 0 8px;
+    color: var(--labelColor);
+}
+

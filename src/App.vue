@@ -1,85 +1,44 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <router-view/>
+  <!--  Для стилизации панели авторизации -->
+  <!--   <TransparentTemplate src="login.JPG" top="0" left="0" use="1"/>-->
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <!-- Треться версия дизайна -->
+  <!--  <TransparentTemplate src="variant_3.png" top="0" left="0" use="1" originSize="1200px"/>-->
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <!-- Треться версия дизайна -->
+  <TransparentTemplate src="variant_3.png" top="0" left="0" use="1" originSize="1200px"/>
 
-  <RouterView />
+  <!-- 1920 -->
+  <!--  <TransparentTemplate src="1920.png" top="0" left="0" use="1" originSize="1920px"/>-->
+
+  <!-- 1920_2-->
+  <!--  <TransparentTemplate src="1920_2.png" top="0" left="0" use="1" originSize="1920px"/>-->
+
+  <TmpLinks/>
+
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script setup>
+import TransparentTemplate from "./develop/TransparentTemplate.vue";
+import {onMounted} from "vue";
+import TmpLinks from "./develop/TmpLinks.vue";
+import {useRouter} from "vue-router";
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+const router = useRouter()
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+onMounted(() => {
+  console.log('== === === === 111 cardNumber', window.cardNumber);
+  // window.cardNumber - при открытии из основной программы получаем id КТ
+  // для работы напрямую, без перехода из основной программы, берем id вызова из адресной строки
+  if (!window.cardNumber) window.cardNumber = location.href.split('/').slice(-1)[0]
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+  // Если пришли из основной программы:
+  location.href.includes('ambulance') && router.push('/#ambulance/2/callcard/' + window.cardNumber)
+})
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+</script>
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+<style>
 </style>

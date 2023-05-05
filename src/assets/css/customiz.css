@@ -1,0 +1,68 @@
+.el-tabs--border-card > .el-tabs__content {
+    padding: 0px;
+}
+
+/* кнопки */
+.el-button {
+    box-shadow: none;
+    --el-font-size-base: 14px;
+    --el-border-radius-base: 6px;
+    margin: 4px 0;
+    height: 30px;
+    border: 0;
+}
+
+.el-button.special-little, .el-button.special-big {
+    border: 1px solid var(--blue0line);
+    height: 35px;
+    border-radius: 4px;
+    color: var(--blue0line);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.el-button.special-big {
+    height: 40px;
+}
+
+.el-button.round {
+    border-radius: 200px;
+}
+
+.el-button.el-button {
+    margin-right: 6px;
+    margin-left: 0px;
+}
+
+/* tabs */
+.tabs .el-tabs__item {
+    padding: 0 14px;
+}
+
+.tabs .is-top {
+    font-weight: bold;
+}
+
+.tabs .el-tabs__nav-scroll {
+    padding-left: 24px;
+}
+
+.tabs .el-tabs__header {
+    margin: 0;
+}
+
+/* высота всех контролов*/
+.el-input__wrapper {
+    height: 39px;
+    margin: 7px 0;
+    margin-right: 8px;
+}
+
+.el-date-editor .el-input__wrapper {
+    margin: -5px 8px 0 0;
+}
+
+.el-date-editor {
+    margin: 10px 0;
+}
+
