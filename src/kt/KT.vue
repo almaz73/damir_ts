@@ -12,7 +12,7 @@ const callcardStore = useCallcardStore()
 const activeName = ref('info')
 
 function handleClick(tab, event) {
-  console.log('tab', tab)
+  console.log('tab')
 }
 
 onMounted(() => {
