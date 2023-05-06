@@ -1,5 +1,5 @@
 .el-tabs--border-card > .el-tabs__content {
-    padding: 0px;
+    padding: 0;
 }
 
 /* кнопки */
@@ -31,7 +31,7 @@
 
 .el-button.el-button {
     margin-right: 6px;
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 /* tabs */
@@ -66,3 +66,24 @@
     margin: 10px 0;
 }
 
+/* Модальные окна */
+.el-dialog .el-dialog__header {
+    position: relative;
+    padding: initial;
+
+}
+.el-dialog .el-dialog__body{
+    white-space:initial;
+    border-radius: 5px;
+}
+.el-dialog .el-dialog__headerbtn{
+    height: 30px;
+    border-radius: 5px;
+}
+.el-dialog .el-dialog__title{
+    margin: 30px;
+    line-height: 40px;
+}
+.el-dialog .el-button.el-button{
+    margin: 0 5px;
+}
