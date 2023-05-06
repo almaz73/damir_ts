@@ -5,6 +5,7 @@ import {useTriggerMenu} from "@/stores/triggerMenu.js";
 import {ref} from "vue";
 import HeaderWatch from "@/components/HeaderWatch.vue";
 import AdminSMP from "./AdminSMP.vue";
+import Modal from "@/components/Modal.vue";
 
 const router = useRouter()
 let activeButton = ref(false)
@@ -19,39 +20,61 @@ function exit() {
   axios.post('/ambulance/logout')
 }
 
+let dialogVisible = ref(true)
+const modalclose = () => dialogVisible.value = false;
+function modalAnswer(val) {
+  modalclose()
+  console.log('modalAnswer val', val)
+}
+
 </script>
 <template>
   <div class="herder-menu">
     <span class="sandwich">
-      <img src="../assets/img/headMenu/sandwich.png" @click="triggerMenu()"/>
+      <img src="../assets/img/headMenu/sandwich.png" @click="triggerMenu()" alt=""/>
     </span>
     <header-watch/>
     <el-button class="version">
       v.1.42.0
       <div class="text-version">Версия 1.42.0 от 24 января 2023 17:33</div>
     </el-button>
-    <el-button>
-      <img src="../assets/img/headMenu/testLink.png"/>
+
+    <el-button text @click="dialogVisible = true">
+      Показать модалку
+    </el-button>
+
+    <Modal :isVisible="dialogVisible"
+           @close="modalclose"
+           @modalClose="modalclose"
+           @modalAnswer="modalAnswer"
+           :title="'Заголовок'">
+      <div style="width: 100%">
+        Тут содержимое <b>включая</b> html
+      </div>
+    </Modal>
+
+    <el-button text>
+      <img src="../assets/img/headMenu/testLink.png" alt=""/>
       Тест связи
     </el-button>
-    <el-button>
-      <img src="../assets/img/headMenu/documentation.png"/>
+    <el-button text>
+      <img src="../assets/img/headMenu/documentation.png" alt=""/>
       Документация
     </el-button>
     <el-button>
-      <img src="../assets/img/headMenu/112.png"/>
+      <img src="../assets/img/headMenu/112.png" alt=""/>
       112
     </el-button>
-    <el-button>
-      <img src="../assets/img/headMenu/support.png"/>
+    <el-button text>
+      <img src="../assets/img/headMenu/support.png" alt=""/>
       Техподдержка
     </el-button>
     <el-button>
-      <img src="../assets/img/headMenu/sign.png"/>
+      <img src="../assets/img/headMenu/sign.png" alt=""/>
       Подписать
     </el-button>
-    <el-button>
-      <img src="../assets/img/headMenu/message.png"/>
+    <el-button text>
+      <img src="../assets/img/headMenu/message.png" alt=""/>
       Оповещение
     </el-button>
 
