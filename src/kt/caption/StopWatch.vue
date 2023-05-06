@@ -8,19 +8,20 @@
 
 <script setup lang="ts">
 import {ref, onBeforeUnmount} from 'vue'
-const resultStr = ref<string>('')
-let hour:number = 0
-let min:number = 0
-let sec:number = 0
-let timeout:number
 
-function updateTimer():void{
+const resultStr = ref<string>('')
+let hour: number = 0
+let min: number = 0
+let sec: number = 0
+let timeout: any
+
+function updateTimer(): void {
   sec++
-  if(sec >= 60){
+  if (sec >= 60) {
     min++
     sec = 0
   }
-  if(min >= 60){
+  if (min >= 60) {
     hour++
     min = 0
   }
@@ -29,11 +30,13 @@ function updateTimer():void{
   clearTimeout(timeout)
   timeout = setTimeout(updateTimer, 1000)
 }
+
 updateTimer()
 
-function format(num:number):string{
+function format(num: number): string {
   return num < 10 ? `0${num}` : `${num}`
 }
+
 onBeforeUnmount(() => {
   clearTimeout(timeout)
 })

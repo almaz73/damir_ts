@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import AddressCtrl from "@/components/AddressCtrl.vue";
 import {ref} from "vue";
 
-let rad1 = ref('1')
+let rad1 = ref<string>('1')
 
 
 </script>

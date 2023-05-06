@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import StatusButtons from "./StatusButtons.vue";
 import StopWatch from "./StopWatch.vue";
 </script>

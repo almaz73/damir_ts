@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import axios from "axios";
 import {useRouter} from "vue-router";
 import {useTriggerMenu} from "@/stores/triggerMenu.js";
@@ -7,14 +7,14 @@ import HeaderWatch from "@/components/HeaderWatch.vue";
 import AdminSMP from "./AdminSMP.vue";
 
 const router = useRouter()
-let activeButton = ref(false)
+let activeButton = ref<boolean>(false)
 
-function triggerMenu() {
+function triggerMenu(): void {
   useTriggerMenu().show = !useTriggerMenu().show
   activeButton.value = useTriggerMenu().show
 }
 
-function exit() {
+function exit(): void {
   router.push({path: '/login'});
   axios.post('/ambulance/logout')
 }
