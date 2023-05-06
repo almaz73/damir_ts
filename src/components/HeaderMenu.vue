@@ -4,6 +4,7 @@ import {useRouter} from "vue-router";
 import {useTriggerMenu} from "@/stores/triggerMenu.js";
 import {ref} from "vue";
 import HeaderWatch from "@/components/HeaderWatch.vue";
+import AdminSMP from "./AdminSMP.vue";
 
 const router = useRouter()
 let activeButton = ref(false)
@@ -56,10 +57,7 @@ function exit() {
 
     <span style="flex-grow: 1"/>
 
-    <el-button>
-      <img src="../assets/img/headMenu/adm.png"/>
-      adminSMP
-    </el-button>
+    <AdminSMP/>
 
     <el-button @click="exit()">
       Выход
@@ -108,6 +106,13 @@ function exit() {
   display: none;
   cursor: pointer;
 }
+
+.herder-menu .adminSMP {
+  display: flex;
+  align-items: center;
+  background-color: #EFEFEF;
+}
+
 
 @media (width < 900px) {
   .herder-menu .sandwich {
