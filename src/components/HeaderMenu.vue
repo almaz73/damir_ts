@@ -61,7 +61,7 @@ function modalAnswer(val) {
       <img src="../assets/img/headMenu/documentation.png" alt=""/>
       Документация
     </el-button>
-    <el-button>
+    <el-button text>
       <img src="../assets/img/headMenu/112.png" alt=""/>
       112
     </el-button>
@@ -69,7 +69,7 @@ function modalAnswer(val) {
       <img src="../assets/img/headMenu/support.png" alt=""/>
       Техподдержка
     </el-button>
-    <el-button>
+    <el-button text>
       <img src="../assets/img/headMenu/sign.png" alt=""/>
       Подписать
     </el-button>
