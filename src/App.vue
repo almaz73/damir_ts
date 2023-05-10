@@ -11,18 +11,13 @@ declare global {
     cardNumber: any;
   }
 }
-let cardNumber: Window
+let cardNumber: number
 
 onMounted((): void => {
-  cardNumber: Window = window.cardNumber
+  cardNumber = window.cardNumber
   console.log('== === === === 111 cardNumber', cardNumber);
-  // window.cardNumber - при открытии из основной программы получаем id КТ
-  // для работы напрямую, без перехода из основной программы, берем id вызова из адресной строки
-  if (!window.cardNumber) window.cardNumber = location.href.split('/').slice(-1)[0]
-
-
-  // Если пришли из основной программы:
-  if (cardNumber) location.href.includes('ambulance') && router.push('/#ambulance/2/callcard/' + cardNumber)
+  if (!cardNumber) cardNumber = +location.href.split('/').slice(-1)[0]
+  if (cardNumber) location.href.includes('ambulance') && router.push('/ambulance/2#/callcard/' + cardNumber)
 })
 
 </script>
