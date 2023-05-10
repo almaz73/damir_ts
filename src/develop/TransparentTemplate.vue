@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // Вспомогательный модуль, для приклеивания шаблона макета над сайтом
 // Используем полупрозрачный слой чтобы сравнивать программу с дизайном
 // для точечного совпадения с дизайном
@@ -13,14 +13,14 @@ const props = defineProps({
   originSize: {type: String, default: '100%'}
 })
 
-let value = ref(+localStorage.getItem('OPACITE') || 0.2)
+let value= ref<number>(+localStorage.getItem('OPACITE')! || 0.2)
 
 const image = computed(() => {
   return '../src/assets/tmpImg/' + props.src
 })
 
 function save() {
-  localStorage.setItem('OPACITE', this.value)
+  localStorage.setItem('OPACITE', value.value.toString())
 }
 
 </script>

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import AddressCtrl from "../../../components/AddressCtrl.vue";
+</script>
+
 <template>
   <div class="addr">
     <div class="head-add">
@@ -25,6 +29,4 @@
   border: 1px solid #ddd;
 }
 </style>
-<script setup>
-import AddressCtrl from "../../../components/AddressCtrl.vue";
-</script>
+

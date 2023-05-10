@@ -15,7 +15,7 @@
 .el-button.special-little, .el-button.special-big {
     border: 1px solid var(--blue0line);
     height: 35px;
-    border-radius: 4px;
+    border-radius: 3px;
     color: var(--blue0line);
     font-size: 17px;
     font-weight: bold;

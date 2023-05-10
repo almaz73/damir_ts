@@ -1,15 +1,23 @@
-<script setup>
+<script setup lang="ts">
+import axios from "axios";
+import {useRouter} from "vue-router";
 import {useTriggerMenu} from "@/stores/triggerMenu.js";
 import {ref} from "vue";
 import HeaderWatch from "@/components/HeaderWatch.vue";
 import AdminSMP from "./AdminSMP.vue";
 import Modal from "@/components/Modal.vue";
 
-let activeButton = ref(false)
+const router = useRouter()
+let activeButton = ref<boolean>(false)
 
-function triggerMenu() {
+function triggerMenu(): void {
   useTriggerMenu().show = !useTriggerMenu().show
   activeButton.value = useTriggerMenu().show
+}
+
+function exit(): void {
+  router.push({path: '/login'});
+  axios.post('/ambulance/logout')
 }
 
 let dialogVisible = ref(true)
@@ -26,7 +34,7 @@ function modalAnswer(val) {
       <img src="../assets/img/headMenu/sandwich.png" @click="triggerMenu()" alt=""/>
     </span>
     <header-watch/>
-    <el-button class="version" text>
+    <el-button class="version">
       v.1.42.0
       <div class="text-version">Версия 1.42.0 от 24 января 2023 17:33</div>
     </el-button>
@@ -73,6 +81,10 @@ function modalAnswer(val) {
     <span style="flex-grow: 1"/>
 
     <AdminSMP/>
+
+    <el-button @click="exit()">
+      Выход
+    </el-button>
   </div>
 </template>
 <style>

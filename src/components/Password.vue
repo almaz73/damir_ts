@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import axios from "axios";
+import {ref} from "vue";
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+let isErr = ref<boolean>(false)
+let password = ref<string>('')
+let login = ref<string>('')
+
+async function onSubmit() {
+  let user: string = (<HTMLInputElement>document.querySelector('[placeholder="Логин"]')).value;
+  let pass: string = (<HTMLInputElement>document.querySelector('[placeholder="Пароль"]')).value;
+  let obj: string = `username=${user}&password=${pass}`;
+
+  await axios.post('/ambulance/login', obj)
+      .then(
+          resp => {
+            router.push({path: '/'});
+            isErr.value = false;
+          },
+          err => {
+            isErr.value = true;
+          }
+      );
+}
+</script>
+
 <template>
   <div class="root">
     <div class="active-fon"></div>
@@ -13,10 +41,10 @@
 
       <form>
         <p>
-          <el-input v-model="login" autocomplete="off"  type="text" placeholder="Логин"/>
+          <el-input v-model="login" autocomplete="off" type="text" placeholder="Логин"/>
         </p>
         <p>
-          <el-input v-model="password" type="password"  placeholder="Пароль" show-password/>
+          <el-input v-model="password" type="password" placeholder="Пароль" show-password/>
         </p>
         <button @click.stop.prevent="onSubmit()">Войти</button>
       </form>
@@ -24,33 +52,6 @@
   </div>
 </template>
 
-<script setup>
-import axios from "axios";
-import {ref} from "vue";
-import {useRouter} from "vue-router";
-
-const router = useRouter()
-let isErr = ref('false')
-let password = ref('')
-let login = ref('')
-
-async function onSubmit() {
-  let user = document.querySelector('[placeholder="Логин"]').value;
-  let pass = document.querySelector('[placeholder="Пароль"]').value;
-  let obj = `username=${user}&password=${pass}`;
-
-  await axios.post('/ambulance/login', obj)
-      .then(
-          resp => {
-            router.push({path: '/'});
-            isErr.value = false;
-          },
-          err => {
-            isErr.value = true;
-          }
-      );
-}
-</script>
 <style>
 
 .alert-danger {
@@ -64,7 +65,6 @@ async function onSubmit() {
 
 .active-fon {
   position: absolute;
-  background: url("../assets/images/autoriz/fonMap.jpg");
   opacity: 0.2;
   width: 100%;
   height: 100vh

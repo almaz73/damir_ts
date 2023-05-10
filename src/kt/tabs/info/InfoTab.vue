@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import CommonInfo from "./CommonInfo.vue";
 import AddressPlace from "./AddressPlace.vue";
 import SickInfo from "./SickInfo.vue";

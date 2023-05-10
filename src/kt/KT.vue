@@ -1,18 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import NavMenu from "../components/NavMenu.vue";
 import HeaderMenu from "../components/HeaderMenu.vue";
-import {useCallcardStore} from "@/stores/callCardStores.js";
+import {useCallcardStore} from "../stores/callCardStores.js";
 import {onMounted, ref} from "vue";
-import {useTriggerMenu} from "@/stores/triggerMenu.js";
+import {useTriggerMenu} from "../stores/triggerMenu.js";
 import Caption from "./caption/Caption.vue";
 import InfoTab from "./tabs/info/InfoTab.vue";
 
 const triggerMenu = useTriggerMenu()
 const callcardStore = useCallcardStore()
-const activeName = ref('info')
+const activeName = ref<string>('info')
 
-function handleClick(tab, event) {
-  console.log('tab')
+function handleClick(tab:object, event:object) {
+  console.log('tab', tab)
 }
 
 onMounted(() => {

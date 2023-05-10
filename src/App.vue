@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import {onMounted} from "vue";
+import TmpLinks from "./develop/TmpLinks.vue";
+import TransparentTemplate from "./develop/TransparentTemplate.vue";
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+
+declare global {
+  interface Window {
+    cardNumber: any;
+  }
+}
+let cardNumber: number
+
+onMounted((): void => {
+  cardNumber = window.cardNumber
+  console.log('== === === === 111 cardNumber', cardNumber);
+  if (!cardNumber) cardNumber = +location.href.split('/').slice(-1)[0]
+  if (cardNumber) location.href.includes('ambulance') && router.push('/ambulance/2#/callcard/' + cardNumber)
+})
+
+</script>
+
 <template>
   <router-view/>
   <!--  Для стилизации панели авторизации -->
@@ -18,27 +42,6 @@
   <TmpLinks/>
 
 </template>
-
-<script setup>
-import TransparentTemplate from "./develop/TransparentTemplate.vue";
-import {onMounted} from "vue";
-import TmpLinks from "./develop/TmpLinks.vue";
-import {useRouter} from "vue-router";
-
-const router = useRouter()
-
-onMounted(() => {
-  console.log('== === === === 111 cardNumber', window.cardNumber);
-  // window.cardNumber - при открытии из основной программы получаем id КТ
-  // для работы напрямую, без перехода из основной программы, берем id вызова из адресной строки
-  if (!window.cardNumber) window.cardNumber = location.href.split('/').slice(-1)[0]
-
-
-  // Если пришли из основной программы:
-  location.href.includes('ambulance') && router.push('/#ambulance/2/callcard/' + window.cardNumber)
-})
-
-</script>
 
 <style>
 </style>

@@ -1,20 +1,12 @@
-<template>
-  <div class="watch-block">
-    <span>
-      {{ formatTime }}
-    </span>
-  </div>
-</template>
-
 <script setup lang="ts">
 import {ref, onBeforeUnmount} from 'vue'
 
 const formatTime = ref<string>('')
-let updateTimeInterval:number;
+let updateTimeInterval: number;
 
-function run():void {
-  const date:Date = new Date()
-  const minutes:string = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2)
+function run(): void {
+  const date: Date = new Date()
+  const minutes: string = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2)
 
   if (formatTime.value !== minutes) formatTime.value = minutes
 
@@ -28,6 +20,14 @@ onBeforeUnmount(() => {
   clearTimeout(updateTimeInterval)
 })
 </script>
+
+<template>
+  <div class="watch-block">
+    <span>
+      {{ formatTime }}
+    </span>
+  </div>
+</template>
 
 <style scoped>
 
