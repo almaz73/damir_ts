@@ -1,13 +1,37 @@
+<script setup>
+import {ref} from "vue";
+import {useCaptionStore} from "@/kt/stores/caprionStore";
+import {useKtStore} from "@/kt/stores/ktStore";
+
+const ktStore=useKtStore()
+
+let captionStore = useCaptionStore()
+let reasonTypes = ref([])
+let reasonType = ref({})
+
+captionStore.getReasonTypes().then(res => {
+  reasonTypes.value = res
+})
+
+</script>
+
 <template>
   <h3>Общая информация</h3>
   <div class="comm">
     <div class="reason row">
       <span class="label"><a>Повод</a></span>
-      <el-select style="width:100%"/>
+      <el-select v-model="ktStore.kt.spnp.reasonType.id" filterable>
+        <el-option
+            v-for="item in reasonTypes"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+        />
+      </el-select>
     </div>
     <div class="hand row">
       <span class="label"><a>Указать повод вручную</a></span>
-      <el-input/>
+      <el-input v-model="ktStore.kt.spnp.reasonText"/>
     </div>
     <div class="sps row">
       <span class="label sps_line"><a>Спецотметки</a></span>

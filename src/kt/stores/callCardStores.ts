@@ -12,16 +12,9 @@ export const useCallcardStore = defineStore("callCardStores", {
     },
     actions: {
         async getAll(params) {
-            let res = getAll(params)
+            let res = await getAll(params)
             if (res.data) this.list = res.data.content
             return res
         }
     }
 })
-
-function getAll(params) {
-    let url = methodName;
-    if (params && params.linesPerPage) url += '?size=' + params.linesPerPage + '&page=' + params.page
-    return axios.get(url)
-        .then(res => res, err => err)
-}

@@ -1,30 +1,16 @@
 <script setup lang="ts">
-import axios from "axios";
 import {useRouter} from "vue-router";
-import {useTriggerMenu} from "@/stores/triggerMenu.js";
+import {useKtStore} from "@/kt/stores/ktStore";
 import {ref} from "vue";
 import HeaderWatch from "@/components/HeaderWatch.vue";
 import AdminSMP from "./AdminSMP.vue";
-import Modal from "@/components/Modal.vue";
 
 const router = useRouter()
 let activeButton = ref<boolean>(false)
 
 function triggerMenu(): void {
-  useTriggerMenu().show = !useTriggerMenu().show
-  activeButton.value = useTriggerMenu().show
-}
-
-function exit(): void {
-  router.push({path: '/login'});
-  axios.post('/ambulance/logout')
-}
-
-let dialogVisible = ref(true)
-const modalclose = () => dialogVisible.value = false;
-function modalAnswer(val) {
-  modalclose()
-  console.log('modalAnswer val', val)
+  useKtStore().showLeftMenu = !useKtStore().showLeftMenu
+  activeButton.value = useKtStore().showLeftMenu
 }
 
 </script>
@@ -38,21 +24,6 @@ function modalAnswer(val) {
       v.1.42.0
       <div class="text-version">Версия 1.42.0 от 24 января 2023 17:33</div>
     </el-button>
-
-    <el-button text @click="dialogVisible = true">
-      Показать модалку
-    </el-button>
-
-    <Modal :isVisible="dialogVisible"
-           @close="modalclose"
-           @modalClose="modalclose"
-           @modalAnswer="modalAnswer"
-           :title="'Заголовок'">
-      <div style="width: 100%">
-        Тут содержимое <b>включая</b> html
-      </div>
-    </Modal>
-
     <el-button text>
       <img src="../assets/img/headMenu/testLink.png" alt=""/>
       Тест связи
@@ -81,10 +52,6 @@ function modalAnswer(val) {
     <span style="flex-grow: 1"/>
 
     <AdminSMP/>
-
-    <el-button @click="exit()">
-      Выход
-    </el-button>
   </div>
 </template>
 <style>

@@ -1,8 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import CommonInfo from "./CommonInfo.vue";
 import AddressPlace from "./AddressPlace.vue";
 import SickInfo from "./SickInfo.vue";
-import ServiceInfo from "./ServiceInfo.vue";
+import MapInfoPanel from "./MapInfoPanel.vue";
 </script>
 
 <template>
@@ -13,14 +13,20 @@ import ServiceInfo from "./ServiceInfo.vue";
     <div class="info__address">
       <AddressPlace/>
     </div>
-    <div class="info__sickinfo"> <SickInfo/></div>
-    <div class="info__service"> <ServiceInfo/></div>
+    <div class="info__sickinfo">
+      <SickInfo/>
+    </div>
+    <div class="info__service">
+      <MapInfoPanel/>
+      <!--      <ServiceInfo/>-->
+    </div>
   </div>
 </template>
 <style scoped>
 .info {
   display: grid;
   grid-template-columns: 1fr 35%;
+  grid-template-rows: minmax(100px, auto) minmax(100px, auto)  minmax(100px, 1fr) ;
   grid-template-areas: 'info__common info__service' 'info__address info__service' 'info__sickinfo info__service';
 }
 
@@ -40,7 +46,7 @@ import ServiceInfo from "./ServiceInfo.vue";
 }
 
 .info__service {
-  padding: 0 24px;
+  z-index: 5;
   grid-area: info__service;
   border-left: 1px solid var(--dark-gray);
 }

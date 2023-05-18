@@ -11,30 +11,30 @@ const link = 'http://192.168.83.53:8080' // мариэл
 // const link = 'http://192.168.83.98:28080/' // калитнинград
 
 export default defineConfig({
-  plugins: [vue()],
-  // develop: false, - поппытка исключить из продуктовой сборки папку develop, не проверено
-  server: {
-    port: 7777,
-    proxy: {
-      '/ambulance/': {
-        target: link,
-        ws: true,
-        changeOrigin: true,
-        withCredentials: true,
-      },
-      '/login': {
-        target: link + '/ambulance',
-        secure: false,
-        changeOrigin: true
-      },
-      '/logout': {
-        target: link + '/ambulance'
-      }
-    }
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
+    plugins: [vue()],
+    // develop: false, - поппытка исключить из продуктовой сборки папку develop, не проверено
+    server: {
+        port: 8888,
+        proxy: {
+            '/ambulance/': {
+                target: link,
+                ws: true,
+                changeOrigin: true,
+                withCredentials: true
+            },
+            '/login': {
+                target: link + '/ambulance',
+                secure: false,
+                changeOrigin: true
+            },
+            '/logout': {
+                target: link + '/ambulance'
+            }
+        }
     },
-  }
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+        },
+    }
 })

@@ -7,14 +7,15 @@ interface Info {
   color: string
 }
 
-let buttons = ref<Array<Info>>([{text: 'КВ заполнена', color: 'grey',},
+let buttons = ref<Array<Info>>([
+  // {text: 'КВ заполнена', color: 'grey',},
   {text: 'КВ не проверена', color: 'grey',},
   {text: 'Идентифицирован', color: 'green-bold',},
-  {text: 'Принят из Служба 112 № [ноя25_оказание_532] (принят (112))', color: 'red',},
-  {text: 'Передан в Полиция (02)', color: 'red',},
-  {text: 'Связан с №424 (ЗАДВ)', color: 'yellow',},
-  {text: 'ЕДДС (Новокузнецкий ГО ЕДДС)', color: 'green-light',},
-  {text: 'Передан в Полиция (02)', color: 'red',},
+  // {text: 'Принят из Служба 112 № [ноя25_оказание_532] (принят (112))', color: 'red',},
+  // {text: 'Передан в Полиция (02)', color: 'red',},
+  // {text: 'Связан с №424 (ЗАДВ)', color: 'yellow',},
+  // {text: 'ЕДДС (Новокузнецкий ГО ЕДДС)', color: 'green-light',},
+  // {text: 'Передан в Полиция (02)', color: 'red',},
   // {text: 'Связан с №424 (ЗАДВ)', color: 'yellow',},
   // {text: 'ЕДДС (Новокузнецкий ГО ЕДДС)', color: 'green-light',}
 ])

@@ -1,25 +1,25 @@
 <script setup lang="ts">
+// @ts-ignore
 import NavMenu from "../components/NavMenu.vue";
+// @ts-ignore
 import HeaderMenu from "../components/HeaderMenu.vue";
-import {useCallcardStore} from "../stores/callCardStores.js";
-import {onMounted, ref} from "vue";
-import {useTriggerMenu} from "../stores/triggerMenu.js";
+import {useKtStore} from "@/kt/stores/ktStore";
+// @ts-ignore
 import Caption from "./caption/Caption.vue";
+// @ts-ignore
 import InfoTab from "./tabs/info/InfoTab.vue";
+// @ts-ignore
+import {ref} from "vue";
 
-const triggerMenu = useTriggerMenu()
-const callcardStore = useCallcardStore()
+const ktStore = useKtStore()
 const activeName = ref<string>('info')
 
-function handleClick(tab:object, event:object) {
-  console.log('tab', tab)
-}
 
-onMounted(() => {
-  callcardStore.getAll().then(res => {
-    console.log('Получение данных с сайта, res = ', res.data);
-  })
-})
+function handleClick(e: object) {
+  if (e.props.name === 'inspection') {
+    // mapPanel.value.showed()
+  }
+}
 </script>
 
 <template>
@@ -27,19 +27,18 @@ onMounted(() => {
     <HeaderMenu/>
   </header>
   <div class="kt">
-    <nav :class="{ 'nav-mobile--active': triggerMenu.show }">
+    <nav :class="{ 'nav-mobile--active': ktStore.showLeftMenu }">
       <NavMenu/>
     </nav>
     <section>
       <Caption/>
 
 
-      <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
+      <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick" stretch="true">
         <el-tab-pane label="Инфо" name="info">
           <InfoTab/>
         </el-tab-pane>
         <el-tab-pane label="Осмотр" name="inspection">
-          <!-- provided-assist-->
           Осмотр
         </el-tab-pane>
         <el-tab-pane label="ФОМС" name="foms">ФОМС</el-tab-pane>

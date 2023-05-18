@@ -1,5 +1,6 @@
-<script setup lang="ts">
-import AddressCtrl from "../../../components/AddressCtrl.vue";
+<script setup>
+import AddressCtrl from "@/components/address/AddressCtrl.vue";
+import AddressLine from "@/components/addressLine/AddressLine.vue";
 </script>
 
 <template>
@@ -10,11 +11,7 @@ import AddressCtrl from "../../../components/AddressCtrl.vue";
       <el-checkbox>Только местные объекты</el-checkbox>
     </div>
 
-    <div class="area">
-      <el-button>Чувашская республика - Чувашия</el-button>
-      <el-button>Чебоксары</el-button>
-      <br><br><br>
-    </div>
+    <AddressLine/>
 
     <AddressCtrl/>
 
@@ -22,11 +19,5 @@ import AddressCtrl from "../../../components/AddressCtrl.vue";
 
 
 </template>
-<style scoped>
 
-.area {
-  width: 100%;
-  border: 1px solid #ddd;
-}
-</style>
 

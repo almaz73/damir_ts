@@ -1,81 +1,95 @@
+<script setup>
+import {useKtStore} from "@/kt/stores/ktStore";
+
+const ktStore = useKtStore()
+
+function showMap() {
+  ktStore.showMap = true
+}
+</script>
 <template>
-  <div class="head-add">
-    <h3>Информация об обслуживании</h3>
-    <el-checkbox>Показать карту</el-checkbox>
-  </div>
-  <div class="row">
-    <span class="label"><a>Номер вызова</a></span>
-    <el-input/>
-  </div>
-  <div class="row">
-    <span class="label"><a>Дата приема</a></span>
-    <el-date-picker/>
-  </div>
-  <div class="row">
-    <span class="label"><a>Время приема</a></span>
-    <el-date-picker/>
-  </div>
-  <div class="row">
-    <span class="label"><a>          Дата смены</a></span>
-
-
-    <el-date-picker/>
-  </div>
-  <div class="table_service">
-    <div class="col1">
-      <div>Передача</div>
-      <div>Выезд бригады</div>
-      <div>Доезд</div>
-      <div>Ожидание</div>
-      <div>Начало транс</div>
-      <div>Оконч. вызова</div>
-      <div>Возврат на подст.</div>
+  <div class="service_info">
+    <div class="head-add">
+      <h3>Информация об обслуживании</h3>
+      <el-checkbox @click="showMap()">Показать карту</el-checkbox>
     </div>
-    <div class="col2">
-      <div>08:01:13</div>
-      <div>08:02:00</div>
-      <div>08:30:00</div>
-      <div>__:__:__</div>
-      <div>__:__:__</div>
-      <div>09:00:21</div>
-      <div>09:25:00</div>
+    <div class="row">
+      <span class="label"><a>Номер вызова</a></span>
+      <el-input v-model="ktStore.kt.callNumber"/>
     </div>
-    <div class="col3">
-      <div>+39</div>
-      <div>+1</div>
-      <div>+28</div>
+    <div class="row">
+      <span class="label"><a>Дата приема</a></span>
+      <el-date-picker v-model="ktStore.kt.receiveDateTime"/>
     </div>
-    <div class="table_service__footer">
-      <span>Затраченное время</span>
-      <el-button>1 час 38 мин</el-button>
-      <span></span>
-      <img src="@/assets/img/editor.png"/>
+    <div class="row">
+      <span class="label"><a>Время приема</a></span>
+      <el-date-picker v-model="ktStore.kt.receiveDateTime"/>
+    </div>
+    <div class="row">
+      <span class="label"><a>Дата смены</a></span>
+      <el-date-picker v-model="ktStore.kt.shift"/>
+    </div>
+    <div class="table_service">
+      <div class="col1">
+        <div>Передача</div>
+        <div>Выезд бригады</div>
+        <div>Доезд</div>
+        <div>Ожидание</div>
+        <div>Начало транс</div>
+        <div>Оконч. вызова</div>
+        <div>Возврат на подст.</div>
+      </div>
+      <div class="col2">
+        <div>08:01:13</div>
+        <div>08:02:00</div>
+        <div>08:30:00</div>
+        <div>__:__:__</div>
+        <div>__:__:__</div>
+        <div>09:00:21</div>
+        <div>09:25:00</div>
+      </div>
+      <div class="col3">
+        <div>+39</div>
+        <div>+1</div>
+        <div>+28</div>
+      </div>
+      <div class="table_service__footer">
+        <span>Затраченное время</span>
+        <el-button>1 час 38 мин</el-button>
+        <span></span>
+        <img src="@/assets/img/editor.png"/>
+      </div>
+
     </div>
 
-  </div>
-
-  <div class="row">
-    <span class="label"><a>Принял</a></span>
-    <el-select/>
-  </div>
-  <div class="row">
-    <span class="label"><a>Направил</a></span>
-    <el-select/>
-  </div>
-  <div class="row">
-    <span class="label"><a>Бригада</a></span>
-    <el-select/>
-  </div>
-  <div class="row">
-    <span class="label"><a>Старщий</a></span>
-    <el-select/>
-  </div>
-  <div class="row">
-    <span class="label"><a>Станция</a></span>
-    <el-select/>
+    <div class="row">
+      <span class="label"><a>Принял</a></span>
+      <el-select/>
+    </div>
+    <div class="row">
+      <span class="label"><a>Направил</a></span>
+      <el-select/>
+    </div>
+    <div class="row">
+      <span class="label"><a>Бригада</a></span>
+      <el-select/>
+    </div>
+    <div class="row">
+      <span class="label"><a>Старщий</a></span>
+      <el-select/>
+    </div>
+    <div class="row">
+      <span class="label"><a>Станция</a></span>
+      <el-select/>
+    </div>
   </div>
 </template>
-<style>
+<style scoped>
+
+.service_info {
+  padding: 0 24px;
+}
+
 .table_service {
   color: var(--black-text);
   display: grid;
